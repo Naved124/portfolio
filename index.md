@@ -47,7 +47,7 @@ title: Home
   <div class="cap-row">
     <span class="cap-label">languages</span>
     <span class="cap-items">
-      <span class="chip">Go</span><span class="chip">Python</span><span class="chip">Bash</span><span class="chip">JavaScript</span>
+      <span class="chip">Go</span><span class="chip">Python</span><span class="chip">Bash</span>
     </span>
   </div>
   <div class="cap-row">
