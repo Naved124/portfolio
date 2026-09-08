@@ -1,0 +1,38 @@
+title: MD Naved Raja Khan
+description: >-
+  Cloud & DevOps engineer in the making — Terraform, AWS, Kubernetes,
+  CI/CD, and a security-conscious approach to infrastructure.
+email: navedk6263@gmail.com
+github_username: your-github-username        # TODO: replace with your GitHub username
+linkedin_url: https://linkedin.com/in/your-handle   # TODO: replace with your LinkedIn URL
+blog_url: https://your-blog-url.example.com  # TODO: replace with your HTB writeup blog URL
+phone: "+91 7987513533"
+
+# Build settings
+markdown: kramdown
+theme: minima
+minima:
+  skin: dark
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - node_modules
