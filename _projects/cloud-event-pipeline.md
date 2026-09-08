@@ -1,7 +1,7 @@
 ---
 title: Cloud Event Pipeline
 stack: Go, PostgreSQL, Docker, Terraform, AWS, GitHub Actions
-repo: https://github.com/your-github-username/cloud-event-pipeline   # TODO: replace with real repo URL
+repo: https://github.com/Naved124/cloud-event-pipeline   # TODO: replace with real repo URL
 summary: A REST API in Go, deployed to AWS with a zero-inbound-SSH CI/CD flow.
 order: 1
 ---

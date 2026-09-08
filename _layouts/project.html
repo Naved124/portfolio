@@ -1,14 +1,18 @@
 ---
 layout: default
 ---
-<article class="project-page">
-  <h1>{{ page.title }}</h1>
-  <p class="project-stack"><strong>Stack:</strong> {{ page.stack }}</p>
-  {% if page.repo %}
-    <p><a href="{{ page.repo }}" target="_blank" rel="noopener">View repository →</a></p>
-  {% endif %}
-  <div class="project-body">
+<article class="proj-detail">
+  <div class="proj-detail-head">
+    <h1>{{ page.title }}</h1>
+    <p class="proj-detail-stack">{{ page.stack }}</p>
+    {% if page.repo %}
+    <p class="proj-detail-repo">
+      <a href="{{ page.repo }}" target="_blank" rel="noopener">{{ page.repo | remove: 'https://' }}</a>
+    </p>
+    {% endif %}
+  </div>
+  <div class="proj-body">
     {{ content }}
   </div>
-  <p><a href="{{ '/' | relative_url }}">← Back to home</a></p>
+  <a class="back-link" href="{{ '/#work' | relative_url }}">&larr; back to work</a>
 </article>

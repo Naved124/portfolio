@@ -3,16 +3,12 @@ description: >-
   Cloud & DevOps engineer in the making — Terraform, AWS, Kubernetes,
   CI/CD, and a security-conscious approach to infrastructure.
 email: navedk6263@gmail.com
-github_username: your-github-username        # TODO: replace with your GitHub username
-linkedin_url: https://linkedin.com/in/your-handle   # TODO: replace with your LinkedIn URL
-blog_url: https://your-blog-url.example.com  # TODO: replace with your HTB writeup blog URL
+github_username: Naved124        # TODO: replace with your GitHub username
+linkedin_url: https://linkedin.com/in/naved-khan-5102a52a0   # TODO: replace with your LinkedIn URL
+blog_url: https://naved124.github.io          # your existing blog
 phone: "+91 7987513533"
 
-# Build settings
 markdown: kramdown
-theme: minima
-minima:
-  skin: dark
 
 collections:
   projects:
@@ -20,6 +16,11 @@ collections:
     permalink: /projects/:path/
 
 defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
   - scope:
       path: ""
       type: "projects"

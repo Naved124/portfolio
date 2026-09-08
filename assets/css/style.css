@@ -1,0 +1,405 @@
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+
+:root {
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-sans: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  --content-w: 720px;
+  --radius: 0;
+}
+
+html[data-theme="dark"] {
+  --bg: #0E2340;
+  --panel: #123054;
+  --ink: #EAF2FA;
+  --ink-dim: #B9CEE0;
+  --muted: #7FA0C0;
+  --accent: #63C7D9;
+  --accent-warm: #E8A33D;
+  --line: rgba(234, 242, 250, 0.16);
+  --line-strong: rgba(234, 242, 250, 0.32);
+}
+
+html[data-theme="light"] {
+  --bg: #EDF1F4;
+  --panel: #E1E8EC;
+  --ink: #14345A;
+  --ink-dim: #385B7F;
+  --muted: #5E7C97;
+  --accent: #1D6E85;
+  --accent-warm: #A85D1E;
+  --line: rgba(20, 52, 90, 0.18);
+  --line-strong: rgba(20, 52, 90, 0.34);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+a {
+  color: var(--ink);
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* ==========================================================================
+   Registration marks (corner crop marks, like a printed sheet)
+   ========================================================================== */
+
+.reg-mark {
+  position: fixed;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--line-strong);
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
+}
+.reg-tl { top: 10px; left: 12px; }
+.reg-tr { top: 10px; right: 12px; }
+.reg-bl { bottom: 10px; left: 12px; }
+.reg-br { bottom: 10px; right: 12px; }
+
+/* ==========================================================================
+   Nav
+   ========================================================================== */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px max(24px, calc((100vw - var(--content-w)) / 2));
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.nav-mark {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+  margin-right: auto;
+}
+.nav-links a { text-decoration: none; color: var(--ink-dim); }
+.nav-links a:hover { color: var(--accent); }
+
+/* Theme switch — literal rocker toggle */
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px;
+}
+.theme-switch-track {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+}
+.theme-switch-thumb {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  transition: transform 0.2s ease;
+}
+html[data-theme="light"] .theme-switch-thumb {
+  transform: translateX(16px);
+}
+.theme-switch-label {
+  min-width: 62px;
+  text-align: left;
+}
+
+/* ==========================================================================
+   Sheet (main content column)
+   ========================================================================== */
+
+.sheet {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+section + section,
+.hero + section {
+  margin-top: 72px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+h2.section-head {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--accent);
+  margin: 0 0 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+h2.section-head::before {
+  content: "§";
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero h1 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.hero .role {
+  font-family: var(--font-mono);
+  color: var(--accent-warm);
+  font-size: 15px;
+  margin: 0 0 28px;
+}
+
+.hero p.lede {
+  max-width: 62ch;
+  color: var(--ink-dim);
+  font-size: 1.05rem;
+}
+
+.hero .contact-row {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.hero .contact-row a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+.hero .contact-row a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ==========================================================================
+   Capability chips
+   ========================================================================== */
+
+.cap-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.cap-row:last-child { border-bottom: none; }
+.cap-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.cap-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 3px 9px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-dim);
+}
+
+/* ==========================================================================
+   Project index rows
+   ========================================================================== */
+
+.proj-row {
+  display: block;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+}
+.proj-row:first-child { padding-top: 0; }
+.proj-row:last-child { border-bottom: none; }
+
+.proj-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.proj-num {
+  font-family: var(--font-mono);
+  color: var(--muted);
+  font-size: 13px;
+  margin-right: 10px;
+}
+.proj-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+.proj-stack {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.proj-summary {
+  margin: 8px 0 0 26px;
+  color: var(--ink-dim);
+  max-width: 58ch;
+}
+.proj-link-line {
+  margin: 10px 0 0 26px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.proj-link-line .leader {
+  flex: 1;
+  border-bottom: 1px dotted var(--line-strong);
+  height: 0;
+  transform: translateY(-4px);
+}
+.proj-row:hover .proj-title { color: var(--accent); }
+.proj-row:hover .proj-link-line { color: var(--accent); }
+
+/* ==========================================================================
+   Notes (achievements / education)
+   ========================================================================== */
+
+.note-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.note-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: var(--ink-dim);
+}
+.note-list li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: var(--accent-warm);
+  font-family: var(--font-mono);
+}
+
+.edu-block {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+  font-size: 14px;
+  color: var(--muted);
+}
+.edu-block strong { color: var(--ink); font-weight: 500; }
+
+/* ==========================================================================
+   Project detail page
+   ========================================================================== */
+
+.proj-detail-head {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+.proj-detail-head h1 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+}
+.proj-detail-stack {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+.proj-detail-repo {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.proj-body ul { padding-left: 20px; }
+.proj-body li { margin-bottom: 10px; color: var(--ink-dim); }
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   Title-block footer
+   ========================================================================== */
+
+.title-block {
+  border-top: 1px solid var(--line-strong);
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 20px 32px;
+  font-family: var(--font-mono);
+}
+.tb-cell { display: flex; flex-direction: column; gap: 4px; }
+.tb-key { font-size: 10.5px; color: var(--muted); }
+.tb-val { font-size: 12.5px; color: var(--ink-dim); }
+.tb-status .tb-val { color: var(--accent-warm); }
+
+@media (max-width: 560px) {
+  .title-block { grid-template-columns: repeat(2, auto); }
+  .cap-row { grid-template-columns: 1fr; }
+  .proj-summary, .proj-link-line { margin-left: 0; }
+}

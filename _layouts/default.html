@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% seo %}
+</head>
+<body>
+
+  <span class="reg-mark reg-tl" aria-hidden="true">+</span>
+  <span class="reg-mark reg-tr" aria-hidden="true">+</span>
+  <span class="reg-mark reg-bl" aria-hidden="true">+</span>
+  <span class="reg-mark reg-br" aria-hidden="true">+</span>
+
+  <header class="nav">
+    <a class="nav-mark" href="{{ '/' | relative_url }}">naved/khan</a>
+    <nav class="nav-links">
+      <a href="{{ '/#work' | relative_url }}">work</a>
+      <a href="{{ '/#notes' | relative_url }}">notes</a>
+      <a href="mailto:{{ site.email }}">contact</a>
+    </nav>
+    <button class="theme-switch" id="theme-switch" type="button" aria-label="Toggle color mode" aria-pressed="false">
+      <span class="theme-switch-track">
+        <span class="theme-switch-thumb"></span>
+      </span>
+      <span class="theme-switch-label" id="theme-switch-label">cyanotype</span>
+    </button>
+  </header>
+
+  <main class="sheet">
+    {{ content }}
+  </main>
+
+  <footer class="title-block">
+    <div class="tb-cell">
+      <span class="tb-key">drawn by</span>
+      <span class="tb-val">M. N. R. Khan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-key">sheet</span>
+      <span class="tb-val">01/01</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-key">rev</span>
+      <span class="tb-val">2026.09</span>
+    </div>
+    <div class="tb-cell tb-status">
+      <span class="tb-key">status</span>
+      <span class="tb-val">open to opportunities</span>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+</body>
+</html>

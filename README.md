@@ -1,6 +1,11 @@
 # Portfolio Site
 
-Jekyll source for my personal portfolio, deployed via GitHub Pages using GitHub Actions.
+Custom Jekyll portfolio — no theme gem, fully hand-built. Design language borrows
+from technical drafting sheets: a title-block footer, corner registration marks,
+dotted leader lines, and a dark/light toggle that switches between a **cyanotype**
+(blueprint-blue, light-on-navy) and a **diazo/blueline** print (ink-on-paper).
+
+Deployed via GitHub Pages using GitHub Actions.
 
 ## Local development
 
@@ -14,15 +19,16 @@ Then open http://localhost:4000
 ## Structure
 
 - `_config.yml` — site metadata, collections, plugins
-- `index.md` — home page (pulls project cards from the `projects` collection)
+- `index.md` — home page (hero, capabilities, work, notes — pulls project rows from the `projects` collection)
 - `_projects/` — one Markdown file per project (Jekyll collection)
-- `_layouts/project.html` — layout used for each project's detail page
-- `assets/css/style.scss` — style overrides on top of the `minima` theme
+- `_layouts/default.html` — base HTML shell: nav, corner marks, title-block footer, theme toggle
+- `_layouts/project.html` — project detail page layout
+- `assets/css/style.css` — full custom stylesheet (CSS custom properties drive both themes)
+- `assets/js/theme.js` — dark/light toggle logic, persists choice in localStorage
 - `.github/workflows/jekyll.yml` — CI/CD: builds and deploys to GitHub Pages on every push to `main`
 
 ## TODO before publishing
 
-- [ ] Replace `github_username`, `linkedin_url`, `blog_url` in `_config.yml`
+- [ ] Replace `github_username` and `linkedin_url` in `_config.yml`
 - [ ] Replace the `repo:` TODO links in each file under `_projects/`
-- [ ] Swap in a real headshot / og-image if desired
-- [ ] Enable "Build and deployment: GitHub Actions" under repo Settings → Pages
+- [ ] Confirm repo Settings → Pages → Source is set to "GitHub Actions"

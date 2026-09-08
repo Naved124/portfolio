@@ -1,7 +1,7 @@
 ---
 title: GitOps EKS Cluster
 stack: Terraform, AWS EKS, Kubernetes, ArgoCD, GitLab
-repo: https://github.com/your-github-username/gitops-eks-cluster   # TODO: replace with real repo URL
+repo: https://gitlab.com/Naved124/gitops-demo-app   # TODO: replace with real repo URL
 summary: A production-style EKS cluster provisioned with Terraform and managed via GitOps.
 order: 2
 ---
