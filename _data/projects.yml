@@ -1,0 +1,78 @@
+- id: tephra
+  title: Tephra
+  tagline: eBPF runtime threat detection for Kubernetes nodes
+  repo: https://github.com/Naved124/Tephra
+  stack: [Go, eBPF (C), Kubernetes, Loki, Grafana]
+  summary: >-
+    eBPF programs watch process, file, network and privilege activity in the
+    kernel; a Go agent ties every event to its pod, runs detection rules and
+    ships alerts to Grafana.
+  stats:
+    - { value: "26", label: "detection rules" }
+    - { value: "22", label: "attack techniques caught in the lab" }
+    - { value: "8", label: "evasion attempts measured" }
+  points:
+    - Hooks process exec/exit, IPv4/IPv6/Unix connections, watched-file opens, refused opens, deletes and renames, ptrace, credential changes, mounts, namespace switches, module and BPF loads, and memfd creation.
+    - Runs unprivileged — four capabilities (BPF, PERFMON, SYS_PTRACE, SYS_RESOURCE) and a read-only root filesystem.
+    - Recognises the container runtime by device and inode, not by path or command line, so a copied binary can't borrow its exemptions.
+    - Correlation rules link events within a pod — a file fetched and then executed, or a service-account token read followed by a call to the Kubernetes API.
+    - Six rules can block as well as alert (off by default).
+    - "Honest about its gaps: a coverage report shows what the attack harness caught, and an evasion report documents the three techniques that still get past it."
+
+- id: logsift
+  title: logsift
+  tagline: logs in, incident report out
+  repo: https://github.com/Naved124/logsift
+  stack: [Python, CloudTrail, nginx / Apache, auth.log]
+  summary: >-
+    Reads web server, Linux auth and AWS CloudTrail logs, links activity by
+    source IP and writes a report answering what happened, when, from where —
+    and whether it worked.
+  stats:
+    - { value: "19", label: "detections across 3 log types" }
+    - { value: "1", label: "timeline per attacker, not 3 alerts" }
+    - { value: "0", label: "third-party dependencies" }
+  points:
+    - A scanner that hits the website, brute-forces SSH and then uses stolen AWS keys from the same IP shows up as one timeline.
+    - Every finding carries an outcome — succeeded, possible or unknown — instead of just firing.
+    - Detects SQLi, XSS, traversal, command injection, scanners, SSH brute force and spraying, root and no-MFA logins, disabled logging, IAM changes and security groups opened to the internet.
+    - Reads rotated .gz logs and CloudTrail S3 objects directly; --fail-on makes it usable from cron or CI.
+
+- id: reconforge
+  title: reconforge
+  tagline: scoped recon-to-report for authorised pentests
+  repo: https://github.com/Naved124/reconforge
+  stack: [Python, Nmap, NVD API 2.0, Metasploit]
+  summary: >-
+    Automates the first hour of an engagement — scan, CVE match, module
+    suggestions, report — while keeping the tester in control. Nothing is
+    exploited automatically.
+  stats:
+    - { value: "4", label: "CVE confidence levels" }
+    - { value: "0", label: "third-party dependencies" }
+    - { value: "0", label: "exploits run automatically" }
+  points:
+    - Scope guard refuses any target not in the approved scope file before Nmap runs, and re-checks hosts in imported scans.
+    - Matches services to CVEs by CPE through the NVD API, then checks the detected version against each CVE's affected ranges locally.
+    - Anything it can't compare reliably is labelled unconfirmed rather than silently dropped or asserted.
+    - Maps CVEs to Metasploit modules and writes a resource script with every line commented out until reviewed.
+    - Flags misconfigurations that aren't CVEs — anonymous FTP, SMB signing off, exposed .git, cleartext protocols.
+
+- id: sentinel-detections
+  title: sentinel-detections
+  tagline: detection-as-code for Microsoft Sentinel
+  repo: https://github.com/Naved124/sentinel-detections
+  stack: [KQL, Microsoft Sentinel, MITRE ATT&CK, Node.js, GitHub Actions]
+  summary: >-
+    KQL analytics rules mapped to ATT&CK, each shipped with a triage playbook
+    and test cases that prove it fires on attacks and stays quiet on normal
+    activity.
+  stats:
+    - { value: "15", label: "rules" }
+    - { value: "4", label: "log sources" }
+    - { value: "2+", label: "tests per rule, fire and stay quiet" }
+  points:
+    - Covers Entra ID sign-ins and audit logs, Azure activity and Linux syslog — spraying, MFA fatigue, impossible travel, Conditional Access disabled, NSGs opened, logging removed and more.
+    - Tests run on the Kusto emulator, the same engine Sentinel uses, so no Azure subscription is needed.
+    - A linter built on Microsoft's own KQL parser checks every table, column and entity mapping before anything runs.
+    - CI runs lint, the full test suite and a docs-freshness check on every push.

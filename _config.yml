@@ -1,19 +1,18 @@
 title: MD Naved Raja Khan
 description: >-
-  Cloud & DevOps engineer in the making — Terraform, AWS, Kubernetes,
-  CI/CD, and a security-conscious approach to infrastructure.
+  Security engineer in the making — runtime detection with eBPF, log
+  investigation, KQL detections and recon tooling, on a cloud and Linux base.
 email: navedk6263@gmail.com
-github_username: Naved124        # TODO: replace with your GitHub username
-linkedin_url: https://linkedin.com/in/naved-khan-5102a52a0   # TODO: replace with your LinkedIn URL
-blog_url: https://naved124.github.io          # your existing blog
+github_username: Naved124
+linkedin_url: https://linkedin.com/in/naved-khan-5102a52a0
+blog_url: https://naved124.github.io
 phone: "+91 7987513533"
 
 markdown: kramdown
 
-collections:
-  projects:
-    output: true
-    permalink: /projects/:path/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
 
 defaults:
   - scope:
@@ -21,15 +20,6 @@ defaults:
       type: "pages"
     values:
       layout: "default"
-  - scope:
-      path: ""
-      type: "projects"
-    values:
-      layout: "project"
-
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
 
 exclude:
   - Gemfile

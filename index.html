@@ -1,0 +1,100 @@
+---
+title: Home
+---
+
+<section class="hero" id="top">
+  <p class="eyebrow reveal">B.Tech CSE · 4th year · Indore</p>
+  <h1 class="hero-name"><span data-scramble>MD Naved</span><br><span data-scramble>Raja Khan</span></h1>
+  <p class="hero-role reveal">security &amp; systems engineer, <span class="accent">in progress</span><span class="caret" aria-hidden="true"></span></p>
+  <p class="hero-lede reveal">
+    I build detection and security tooling: an eBPF sensor that watches Kubernetes
+    nodes from the kernel, a log investigator that turns raw logs into an incident
+    timeline, tested KQL detections for Sentinel, and scoped recon automation.
+    Underneath is a cloud and Linux base — AWS, Terraform, Kubernetes, CI/CD — and
+    a habit of documenting what my tools miss, not just what they catch.
+  </p>
+  <div class="hero-actions reveal">
+    <a class="btn btn-primary magnetic" href="#work"><span>see the work</span><span class="btn-arrow" aria-hidden="true">&darr;</span></a>
+    <a class="btn magnetic" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener"><span>github</span><span class="btn-arrow" aria-hidden="true">&nearr;</span></a>
+    <a class="btn magnetic" href="mailto:{{ site.email }}"><span>email me</span><span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <h2 class="section-head reveal"><span class="section-num">01</span>selected work</h2>
+
+  <div class="projects">
+  {% for p in site.data.projects %}
+    <article class="card reveal" id="{{ p.id }}">
+      <div class="card-top">
+        <span class="card-num">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
+        <a class="card-repo" href="{{ p.repo }}" target="_blank" rel="noopener" aria-label="{{ p.title }} on GitHub">repo &nearr;</a>
+      </div>
+      <h3 class="card-title glitch" data-text="{{ p.title }}">{{ p.title }}</h3>
+      <p class="card-tagline">{{ p.tagline }}</p>
+      <p class="card-summary">{{ p.summary }}</p>
+      <ul class="stats">
+        {% for s in p.stats %}<li><span class="stat-val" data-count="{{ s.value }}">{{ s.value }}</span><span class="stat-label">{{ s.label }}</span></li>{% endfor %}
+      </ul>
+      <ul class="chips" aria-label="Stack">
+        {% for t in p.stack %}<li>{{ t }}</li>{% endfor %}
+      </ul>
+      <button class="card-toggle" type="button" aria-expanded="false" aria-controls="{{ p.id }}-detail">
+        <span class="toggle-label">how it works</span><span class="toggle-icon" aria-hidden="true"></span>
+      </button>
+      <div class="card-detail" id="{{ p.id }}-detail">
+        <div class="card-detail-inner">
+          <ul class="points">
+            {% for pt in p.points %}<li>{{ pt }}</li>{% endfor %}
+          </ul>
+          <a class="btn btn-small magnetic" href="{{ p.repo }}" target="_blank" rel="noopener"><span>read the code</span><span class="btn-arrow" aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+</section>
+
+<section id="stack" class="section">
+  <h2 class="section-head reveal"><span class="section-num">02</span>stack</h2>
+  <div class="stack-grid">
+    <div class="stack-col reveal">
+      <h3>detection &amp; response</h3>
+      <ul class="chips"><li>eBPF</li><li>KQL / Microsoft Sentinel</li><li>MITRE ATT&amp;CK</li><li>CloudTrail</li><li>Grafana + Loki</li></ul>
+    </div>
+    <div class="stack-col reveal">
+      <h3>offensive tooling</h3>
+      <ul class="chips"><li>Nmap</li><li>Burp Suite</li><li>Metasploit</li><li>Wireshark</li></ul>
+    </div>
+    <div class="stack-col reveal">
+      <h3>cloud &amp; infra</h3>
+      <ul class="chips"><li>AWS — EC2, VPC, IAM, EKS, SSM</li><li>Terraform</li><li>Docker</li><li>Kubernetes</li><li>GitHub Actions</li></ul>
+    </div>
+    <div class="stack-col reveal">
+      <h3>languages</h3>
+      <ul class="chips"><li>Go</li><li>Python</li><li>C</li><li>Bash</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="notes" class="section">
+  <h2 class="section-head reveal"><span class="section-num">03</span>notes</h2>
+  <ol class="timeline">
+    <li class="reveal"><span class="t-when">2023 – 2027</span><span class="t-what"><strong>B.Tech, Computer Science and Engineering</strong> — Prestige Institute of Engineering, Management and Research</span></li>
+    <li class="reveal"><span class="t-when">Oct 2025</span><span class="t-what"><strong>SOC Core Skills with John Strand</strong> — Antisyphon Training (BHIS), 16 hours</span></li>
+    <li class="reveal"><span class="t-when">Sep 2025</span><span class="t-what"><strong>Offensive Security Operations</strong> — Cybrary</span></li>
+    <li class="reveal"><span class="t-when">cert</span><span class="t-what"><strong>Google Cybersecurity Professional Certificate</strong> — Coursera</span></li>
+    <li class="reveal"><span class="t-when">ongoing</span><span class="t-what"><strong>Bronze &amp; Silver badges</strong> — HackTheBox Seasonal machines</span></li>
+  </ol>
+</section>
+
+<section id="contact" class="section contact">
+  <h2 class="section-head reveal"><span class="section-num">04</span>contact</h2>
+  <p class="contact-big reveal"><a class="magnetic-text" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  <ul class="contact-links reveal">
+    <li><a class="btn magnetic" href="tel:{{ site.phone | replace: ' ', '' }}"><span>{{ site.phone }}</span></a></li>
+    <li><a class="btn magnetic" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener"><span>github</span><span class="btn-arrow" aria-hidden="true">&nearr;</span></a></li>
+    <li><a class="btn magnetic" href="{{ site.linkedin_url }}" target="_blank" rel="noopener"><span>linkedin</span><span class="btn-arrow" aria-hidden="true">&nearr;</span></a></li>
+    <li><a class="btn magnetic" href="{{ site.blog_url }}"><span>security notes</span><span class="btn-arrow" aria-hidden="true">&nearr;</span></a></li>
+  </ul>
+</section>
