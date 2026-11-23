@@ -1,10 +1,16 @@
+/* Maple Mono v7.9 (SIL OFL 1.1, see fonts/maple-mono/OFL.txt), self-hosted. */
+@font-face { font-family: "Maple Mono"; src: url("../fonts/maple-mono/MapleMono-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Maple Mono"; src: url("../fonts/maple-mono/MapleMono-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Maple Mono"; src: url("../fonts/maple-mono/MapleMono-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Maple Mono"; src: url("../fonts/maple-mono/MapleMono-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
 /* ==========================================================================
    Tokens
    ========================================================================== */
 
 :root {
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --font-display: "Space Grotesk", -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Maple Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: "Maple Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --w: 1080px;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
