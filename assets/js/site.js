@@ -199,7 +199,7 @@
     cat: function (args) {
       var f = (args[0] || '').replace(/^\.\//, '');
       if (f === 'about') {
-        print('Security & systems engineer in progress. I write eBPF detection for Kubernetes nodes,\nlog investigation tools, tested KQL detections and scoped recon automation —\non a base of AWS, Terraform, Kubernetes and ~4 years of daily Linux.');
+        print('Security researcher & systems programmer, in progress. I build low-level security\ntools and then try to break them: an eBPF runtime sensor for Kubernetes, a decompiler\nin Rust, log investigation, tested KQL detections and scoped recon automation.\n~4 years of daily Linux.');
       } else if (f === 'contact') {
         commands.contact();
       } else if (!f) {
