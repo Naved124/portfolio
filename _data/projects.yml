@@ -2,7 +2,7 @@
   title: Tephra
   tagline: eBPF runtime threat detection for Kubernetes nodes
   repo: https://github.com/Naved124/Tephra
-  writeup: https://naved124.github.io/notes/building-tephra-day-1/
+  writeup: https://navedkhan.dev/notes/building-tephra-day-1/
   stack: [Go, eBPF (C), Kubernetes, Loki, Grafana]
   summary: >-
     eBPF programs watch process, file, network and privilege activity in the
