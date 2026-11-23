@@ -227,6 +227,7 @@
         'email     <a href="mailto:' + esc(data.email) + '">' + esc(data.email) + '</a>',
         'github    ' + link(data.github),
         'linkedin  ' + link(data.linkedin),
+        'orcid     ' + link(data.orcid),
         'notes     ' + link(data.blog)
       ].join('\n'));
     },

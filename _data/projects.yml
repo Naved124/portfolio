@@ -2,22 +2,23 @@
   title: Tephra
   tagline: eBPF runtime threat detection for Kubernetes nodes
   repo: https://github.com/Naved124/Tephra
+  writeup: https://naved124.github.io/notes/building-tephra-day-1/
   stack: [Go, eBPF (C), Kubernetes, Loki, Grafana]
   summary: >-
     eBPF programs watch process, file, network and privilege activity in the
     kernel; a Go agent ties every event to its pod, runs detection rules and
     ships alerts to Grafana.
   stats:
-    - { value: "26", label: "detection rules" }
+    - { value: "36", label: "detection rules" }
     - { value: "22", label: "attack techniques caught in the lab" }
-    - { value: "8", label: "evasion attempts measured" }
+    - { value: "27", label: "evasion attempts measured" }
   points:
     - Hooks process exec/exit, IPv4/IPv6/Unix connections, watched-file opens, refused opens, deletes and renames, ptrace, credential changes, mounts, namespace switches, module and BPF loads, and memfd creation.
     - Runs unprivileged — four capabilities (BPF, PERFMON, SYS_PTRACE, SYS_RESOURCE) and a read-only root filesystem.
     - Recognises the container runtime by device and inode, not by path or command line, so a copied binary can't borrow its exemptions.
     - Correlation rules link events within a pod — a file fetched and then executed, or a service-account token read followed by a call to the Kubernetes API.
     - Six rules can block as well as alert (off by default).
-    - "Honest about its gaps: a coverage report shows what the attack harness caught, and an evasion report documents the three techniques that still get past it."
+    - "Honest about its gaps: a coverage report shows what the attack harness caught, and an evasion report documents the techniques that still get past it: 5 of 27 in the latest run."
 
 - id: logsift
   title: logsift

@@ -69,6 +69,7 @@
       "github": {{ site.github_username | prepend: "https://github.com/" | jsonify }},
       "linkedin": {{ site.linkedin_url | jsonify }},
       "blog": {{ site.blog_url | jsonify }},
+      "orcid": {{ site.orcid_url | jsonify }},
       "projects": [{% for p in site.data.projects %}{"id": {{ p.id | jsonify }}, "title": {{ p.title | jsonify }}, "tagline": {{ p.tagline | jsonify }}, "repo": {{ p.repo | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]
     }
   </script>
