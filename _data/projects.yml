@@ -20,6 +20,27 @@
     - Six rules can block as well as alert (off by default).
     - "Honest about its gaps: a coverage report shows what the attack harness caught, and an evasion report documents the techniques that still get past it: 5 of 27 in the latest run."
 
+- id: fulgurite
+  title: Fulgurite
+  tagline: a decompiler whose guesses are visible, explainable and reversible
+  repo: https://github.com/Naved124/fulgurite
+  stack: [Rust, x86-64, ARM64, ELF, PE, SQLite, libFuzzer]
+  summary: >-
+    A disassembler and decompiler that attaches a confidence and its evidence to
+    every claim it makes, can answer "why does it say this?" for any line, and
+    lets you reject an inference so it stays rejected.
+  stats:
+    - { value: "2", label: "architectures: x86-64 and ARM64" }
+    - { value: "2", label: "file formats: ELF and PE" }
+    - { value: "4", label: "fuzz targets: loaders, decoders, functions, xrefs" }
+  points:
+    - "Loads ELF and PE: headers, sections, symbols, relocations, imports and exports, plus mitigation checks (canary, FORTIFY, CFI)."
+    - The AArch64 decoder is generated from Arm's machine-readable specification, not written by hand.
+    - Recovers functions from control flow, no-return calls, jump tables and PLT stubs, and builds cross-references.
+    - Every result lives in a fact store with its status, confidence and evidence, cached in SQLite.
+    - "Tested against the reference tools: readelf, objdump, llvm-mc and llvm-readobj, plus hostile-input and mutation tests."
+    - "Status: milestone M0 (inspect) done, M1 (functions) nearly done; next is measuring function recovery against IDA and Binary Ninja."
+
 - id: logsift
   title: logsift
   tagline: logs in, incident report out
