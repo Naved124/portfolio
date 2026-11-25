@@ -5,16 +5,39 @@ description: >-
   measured for what it misses.
 email: navedk6263@gmail.com
 github_username: Naved124
-linkedin_url: https://linkedin.com/in/naved-khan-5102a52a0
+linkedin_url: https://www.linkedin.com/in/md-naved-raja-khan-5102a52a0
 blog_url: https://navedkhan.dev
 orcid_url: https://orcid.org/0009-0004-0426-2822
 x_url: https://x.com/NavedKhan371877
 
 markdown: kramdown
 
+# Absolute links for search engines and link previews. The deploy workflow
+# passes the same base path.
+url: https://navedkhan.dev
+baseurl: /portfolio
+lang: en_US
+# jekyll-seo-tag: who the site is about, the preview image, the X account.
+author:
+  name: MD Naved Raja Khan
+  url: https://navedkhan.dev
+twitter:
+  username: NavedKhan371877
+  card: summary_large_image
+social:
+  name: MD Naved Raja Khan
+  links:
+    - https://navedkhan.dev
+    - https://github.com/Naved124
+    - https://www.linkedin.com/in/md-naved-raja-khan-5102a52a0
+    - https://x.com/NavedKhan371877
+    - https://orcid.org/0009-0004-0426-2822
+    - https://profile.hackthebox.com/profile/019fff3f-1f44-7340-a937-47140f1f94a2
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 defaults:
   - scope:
@@ -22,6 +45,11 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+      image:
+        path: /assets/portfolio-card.png
+        width: 1200
+        height: 630
+        alt: MD Naved Raja Khan, security researcher and systems programmer
 
 exclude:
   - Gemfile
